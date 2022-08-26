@@ -41,6 +41,12 @@ class AddForm(FlaskForm):
 
     submit = SubmitField("Add Movie")
 
+def get_movie_info(title):
+    params = {'api_key':API_KEY,
+              'query':title}
+    response = requests.get(url='https://api.themoviedb.org/3/search/movie', params=params)
+    result = response.json()['results']
+    return params, result    
 
 @app.route("/")
 def home():
@@ -70,13 +76,6 @@ def delete():
     db.session.delete(movie_to_delete)
     db.session.commit()
     return redirect(url_for('home'))
-
-def get_movie_info(title):
-    params = {'api_key':API_KEY,
-              'query':title}
-    response = requests.get(url='https://api.themoviedb.org/3/search/movie', params=params)
-    result = response.json()['results']
-    return params, result
 
 @app.route("/add", methods=['GET', 'POST'])
 def add():
