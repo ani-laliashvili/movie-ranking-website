@@ -6,10 +6,10 @@ from wtforms import StringField, SubmitField, IntegerField
 from wtforms.validators import DataRequired
 import requests
 
-API_KEY = '79d20397acf0403efa0d92445bf3d426'
+API_KEY = 'YOUR_API_KEY' #https://api.themoviedb.org
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = 'SOME_SECRET_KEY'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
